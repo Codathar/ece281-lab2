@@ -54,11 +54,11 @@ begin
     test_proccess: process
     begin
     
-        w_sw <= x"0"; wait for 10ns;
+        w_sw <= x"0"; wait for 10 ns;
             assert(w_seg = NOT "0111111") report "bad 0" severity failure; 
-        w_sw <= x"5"; wait for 10ns; 
+        w_sw <= x"5"; wait for 10 ns; 
             assert(w_seg = NOT "1101101") report "bad 5" severity failure;
-        w_sw <= x"D"; wait for 10ns;
+        w_sw <= x"D"; wait for 10 ns;
             assert(w_seg = NOT "1011110")report "bad D" severity failure; 
            wait; 
      
