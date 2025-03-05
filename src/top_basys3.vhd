@@ -79,19 +79,35 @@ end top_basys3;
 architecture top_basys3_arch of top_basys3 is 
 	
   -- declare the component of your top-level design
-
-
+    component sevenseg_decoder is 
+        port( 
+              i_hex : in STD_LOGIC_VECTOR (3 downto 0);
+              o_seg_n : out STD_LOGIC_VECTOR (6 downto 0)
+             ); 
+             end component sevenseg_decoder; 
   -- create wire to connect button to 7SD enable (active-low)
-
+    signal w_7SD_EN_n  : STD_LOGIC; 
   
 begin
 	-- PORT MAPS ----------------------------------------
-
+     
 	--	Port map: wire your component up to the switches and seven-segment display cathodes
 	-----------------------------------------------------	
-	
+	sevenseg_decoder_0: sevenseg_decoder
+	   port map(
+	       i_hex => sw ,
+	       o_seg_n => seg
+	       
+	       ); 
 	
 	-- CONCURRENT STATEMENTS ----------------------------
+	w_7SD_EN_n  <= not btnC;
+
+    an(0)   <= w_7SD_EN_n;
+    an(1)   <= '1';
+    an(2)   <= '1';
+    an(3)   <= '1';
+    
 	
 	-- wire up active-low 7SD anode (active low) to button (active-high)
 	-- display 7SD 0 only when button pushed

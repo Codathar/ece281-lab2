@@ -40,9 +40,9 @@ architecture Behavioral of sevenseg_decoder is
 
 begin
     with i_hex select
-        o_seg_n => NOT "0111111" when "0000", 
+        o_seg_n <= NOT "0111111" when "0000", 
                    NOT "0000110" when "0001",
-                   NOT "1001111" when "0010", 
+                   NOT "1011011" when "0010", 
                    NOT "1001111" when "0011", 
                    NOT "1100110" when "0100", 
                    NOT "1101101" when "0101", 
